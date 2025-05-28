@@ -1,0 +1,92 @@
+# EasyTransparentWindow
+
+EasyTransparentWindow is a Unity project that enables developers to create transparent, borderless, and customizable application windows. It provides tools to manage window transparency, size, and other settings, making it ideal for creating unique user interfaces or overlay applications.
+
+IT HAS ONLY BEEN TESTED ON WINDOWS 11 IT MAY NOT WORK FOR OTHER VERSIONS OF WINDOWS
+
+IT RELIES ON WINDOWS NATIVE APIS IT WILL NOT WORK FOR OTHER OPERATING SYSTEMS
+## Versioning
+### 0.0.2
+- Changed camera to use transparent version of color so OBS can keep background transparent
+## Features
+
+- **Transparent Windows**: Set a transparency key color to make parts of the window transparent.
+- **Borderless Mode**: Remove the window toolbar for a clean, frameless look.
+- **Fullscreen Support**: Enable fullscreen mode with customizable resolution.
+- **Window Resizing**: Allow or restrict window resizing.
+- **Pin to Top**: Keep the window always on top of other windows.
+- **Run in Background**: Allow the application to continue running when not in focus.
+
+## Usage
+
+### TransparencyRunner
+
+The core functionality is managed by the `TransparencyRunner` script, which is attached to a GameObject in your scene.
+
+#### Key Properties
+
+- **Transparency Color**: Select the color to be used as the transparency key.
+- **Main Camera**: Assign the main camera for rendering.
+- **Borderless**: Enable or disable borderless mode.
+- **Fullscreen**: Enable or disable fullscreen mode.
+- **Window Width/Height**: Set the dimensions of the window.
+- **Allow Build Setting Changes**: Allow modifications to build settings.
+- **Run in Background**: Enable or disable running the application in the background.
+
+#### Example
+
+To use the `TransparencyRunner`:
+
+1. Add the `TransparentWindow` GameObject in your scene.
+2. Configure the settings in the Unity Inspector.
+3. Assign the camera
+4. Run the scene to see the changes applied.
+
+### Editor Tools
+
+The project includes custom editor scripts to enhance the Unity Inspector experience:
+
+- **TransparencyRunnerEditor**: Provides a user-friendly interface for configuring `TransparencyRunner` settings.
+- **BuildSettingsModifier**: Automatically adjusts Unity build settings based on `TransparencyRunner` properties.
+
+## Code Overview
+
+### TransparencyRunner.cs
+
+This script handles the core logic for managing window transparency and settings. Key methods include:
+
+- `Start()`: Initializes the window settings, such as transparency and fullscreen mode.
+- `Update()`: Updates the window transparency in real-time.
+- `ColorToUint(Color color)`: Converts a Unity `Color` to a `uint` for use with the transparency API.
+- `colorFromEnum()`: Maps the selected transparency color enum to a Unity `Color`.
+
+### TransparencyRunnerEditor.cs
+
+A custom Unity Editor script that provides an enhanced Inspector for `TransparencyRunner`. It includes:
+
+- Toggles and fields for all configurable properties.
+- Conditional disabling of fields based on other settings (e.g., disabling resizing when fullscreen is enabled).
+
+### BuildSettingsModifier.cs
+
+This script modifies Unity build settings during the build process to ensure compatibility with the transparency features.
+
+## Dependencies
+
+- **UnityTransparentWindow**: A library for managing transparent windows in Unity.
+- **Windows API**: Used for window management (e.g., `GetWindowRect`, `SetWindowPos`).
+
+## Known Bugs
+
+1. There seems to be issues when using fullscreen mode with the borderless option
+2. If the Unity project is ever built and run in fullscreen mode (The Unity setting not the FullScreen toggle in this project) then the project my not work as intended, this is caused by Windows caching program data. 
+3. The above bugs may very well be caused by the same issue, I will look into the issue as time and community interest allow
+
+## License
+
+This project is licensed under a custom license. See the [LICENSE.md](./LICENSE.md) file for details.
+
+## Acknowledgments
+
+- Inspired by the need for transparent and borderless window applications in Unity.
+- Special thanks to the Unity community for their support and resources.
