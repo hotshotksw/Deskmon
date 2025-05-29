@@ -1110,7 +1110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 560f5070b4233b74abb6b7553a715658, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transparencyColorSelected: 16777215
+  transparencyColorSelected: 0
   mainCamera: {fileID: 330585545}
   pinToTop: 1
   borderless: 1
