@@ -16,7 +16,7 @@ public class PetManager : MonoBehaviour
 	[SerializeField] private Transform petMenu;
 	[SerializeField] private Image actionIcon;
 	[SerializeField] private Sprite[] actionOptions;
-	[SerializeField] private float decayTime = 300;
+	[SerializeField] private float[] decayTimes;
 
 	[SerializeField] private Slider[] resources;
 
@@ -36,7 +36,7 @@ public class PetManager : MonoBehaviour
 		clockText.text = "" + now.Hour.ToString("00") + ((now.Millisecond < 500) ? " " : ":") + now.Minute.ToString("00");
 		for(int i = 0; i < resources.Length; i++)
 		{
-			resources[i].value = Mathf.Clamp(resources[i].value - Time.deltaTime / decayTime, 0, 1);
+			resources[i].value = Mathf.Clamp(resources[i].value - Time.deltaTime / decayTimes[i], 0, 1);
 		}
 	}
 
