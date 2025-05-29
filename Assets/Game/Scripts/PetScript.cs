@@ -24,7 +24,7 @@ public class PetScript : MonoBehaviour
 		sr.sprite = egg;
 	}
 
-	private void Update()
+	private void FixedUpdate()
 	{
 		timer -= Time.deltaTime;
 		//if (timer < 0)
