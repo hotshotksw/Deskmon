@@ -215,8 +215,12 @@ MonoBehaviour:
   clockMenu: {fileID: 1743850619}
   clockText: {fileID: 374120463}
   petMenu: {fileID: 976847861}
-  actionIcon: {fileID: 0}
-  actionOptions: []
+  actionIcon: {fileID: 1964602099}
+  actionOptions:
+  - {fileID: 21300000, guid: 47981cd26bd11e64abe133979f1c8328, type: 3}
+  - {fileID: 21300000, guid: 0e3bb5dd99c55e94282805087171901c, type: 3}
+  - {fileID: 21300000, guid: 67fc008a32cee6d4abb0027d578e8db5, type: 3}
+  - {fileID: 21300000, guid: 338670b8d3fc4194d86df519c3fd380e, type: 3}
 --- !u!1 &227835523
 GameObject:
   m_ObjectHideFlags: 0
