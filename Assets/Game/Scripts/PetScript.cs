@@ -17,7 +17,7 @@ public class PetScript : MonoBehaviour
 	// stats
 	public float lifeStage = 0;
 	public float lifeTimer = 1;
-	public float timer = 1;
+	public float timer = 3;
 
 	private void Start()
 	{
@@ -26,9 +26,9 @@ public class PetScript : MonoBehaviour
 
 	private void Update()
 	{
-		//timer -= Time.deltaTime;
+		timer -= Time.deltaTime;
 		//if (timer < 0)
-		if (Input.GetKeyDown(KeyCode.Space))
+		if (Input.GetKeyDown(KeyCode.Space) || timer < 0)
 		{
 			lifeStage++;
 			timer = lifeTimer;
