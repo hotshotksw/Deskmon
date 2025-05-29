@@ -1,4 +1,3 @@
-using NUnit.Framework;
 using System;
 using TMPro;
 using UnityEngine;
@@ -17,17 +16,28 @@ public class PetManager : MonoBehaviour
 	[SerializeField] private Transform petMenu;
 	[SerializeField] private Image actionIcon;
 	[SerializeField] private Sprite[] actionOptions;
+	[SerializeField] private float decayTime = 300;
+
+	[SerializeField] private Slider[] resources;
 
 	private void Start()
 	{
 		HideClockMenu();
 		UpdateSelection();
+		for(int i = 0; i < resources.Length; i++)
+		{
+			resources[i].value = 1;
+		}
 	}
 
 	private void Update()
 	{
 		DateTime now = DateTime.Now;
 		clockText.text = "" + now.Hour.ToString("00") + ((now.Millisecond < 500) ? " " : ":") + now.Minute.ToString("00");
+		for(int i = 0; i < resources.Length; i++)
+		{
+			resources[i].value = Mathf.Clamp(resources[i].value - Time.deltaTime / decayTime, 0, 1);
+		}
 	}
 
 	public void UpdateSelection()
@@ -47,6 +57,10 @@ public class PetManager : MonoBehaviour
 
 	public void ClickButtonB()
 	{
+		if (selection > 1)
+		{
+			resources[selection - 2].value += 0.34f;
+		}
 		selection = 0;
 		UpdateSelection();
 	}
