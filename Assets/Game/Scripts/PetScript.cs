@@ -16,8 +16,8 @@ public class PetScript : MonoBehaviour
 
 	// stats
 	public float lifeStage = 0;
-	public float lifeTimer = 1;
-	public float timer = 3;
+	public float lifeTimer = 3;
+	public float timer = 10;
 
 	private void Start()
 	{
